@@ -13,4 +13,8 @@ for index, rows in df.iterrows():
     # the numbers below represents: x1,y1 x2,y2(i.e. coordinates)
     pdf.line(10, 26, 200, 26)
 
+    # create other pages after the header
+    for i in range(rows["Pages"] - 1):
+        pdf.add_page()
+
 pdf.output('output.pdf')
