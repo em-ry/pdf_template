@@ -15,7 +15,11 @@ for index, rows in df.iterrows():
     pdf.set_text_color(100, 100, 100)
     pdf.cell(w=0, h=24, txt=rows["Topic"], ln=1, align='L')
     # the numbers below represents: x1,y1 x2,y2(i.e. coordinates)
-    pdf.line(10, 26, 200, 26)
+    # pdf.line(10, 26, 200, 26) -> no longer needed
+
+    # Draw horizontal lines, 278mm , tot.298mm
+    for y in range(30, 288, 10):
+        pdf.line(10, y, 200, y)
 
     # Set the footer
     pdf.ln(250)
@@ -26,6 +30,10 @@ for index, rows in df.iterrows():
     # create other pages after the header
     for i in range(rows["Pages"] - 1):
         pdf.add_page()
+
+        # Draw horizontal lines, 278mm , tot.298mm
+        for y in range(20, 288, 10):
+            pdf.line(10, y, 200, y)
 
         # Set the footer
         pdf.ln(275)
